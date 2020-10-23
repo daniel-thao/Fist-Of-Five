@@ -1,0 +1,38 @@
+.fist-of-five-button {
+  padding: 1em;
+  width: 5em;
+  font-size: 2em;
+  background: lightcoral;
+  border-radius: .3em;
+  margin: 0em 2em 0em 2em;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    margin: 4em 0em 4em 0em;
+}
+
+.userNotice {
+    font-size: 2em;
+    text-align: center;
+    padding: 1em 0em 1em 0em;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.title {
+    font-size: 3.5em;
+    text-align: center;
+    padding: 1em 0em .5em 0em;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.background {
+    background: lightgray;
+    height: 100%;
+    width: 100%;
+}
+
+.imgOne {
+    
+}

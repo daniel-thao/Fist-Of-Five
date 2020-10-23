@@ -65,3 +65,47 @@ router.post("/register", (req, res) => {
     }
   });
 });
+
+router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // we are going to see if we had any errors with the validationa and if we do, send back those errors
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // Then since no error, we will compare the passwords sent with the data
+  db.User.findOne({ email }).then((user) => {
+    // Check if the user even exists in the db
+    if (!user) {
+      return res.status(404).json({ emailNotFound: "Email not found" });
+    }
+
+    // IF there is a user, then lets compare the incoming password to the existing password
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      // If the password does match, then go ahead and do these things
+      if (isMatch) {
+        const payload = {
+          id: user.id,
+          name: user.name,
+        };
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926,
+          },
+          (err, token) => {
+            res.json({ success: true, token: "Bearer " + token });
+          }
+        );
+      } else {
+        return res.status(400).json({ passwordIncorrect: "Password incorrect" });
+      }
+    });
+  });
+});
+
