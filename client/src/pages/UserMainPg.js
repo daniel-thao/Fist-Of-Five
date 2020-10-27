@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 
 // Bring in the REGULAR Components
 import Section from "../components/regular/Section";
@@ -16,7 +16,7 @@ import title from "../assets/FistToFive.png";
 
 export default function UserMainPg() {
   // For the CSS Transition package we need a state
-  const [bgAni, setBgAni] = useState(true);
+  // const [bgAni, setBgAni] = useState(true);
   return (
     <>
       {/* <CSSTransition
@@ -31,7 +31,7 @@ export default function UserMainPg() {
         <div></div>
         <Section>
           {/* <h1 className="title">Fist of Five</h1> */}
-          <img className="title" src={title}></img>
+          <img className="title" src={title} alt="Fist To Five"></img>
           <h2 className="userNotice">We value your privacy.</h2>
           <h2 className="userNotice">
             Only the Instructional team will be able to see the choice you make.

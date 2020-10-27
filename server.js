@@ -10,6 +10,11 @@ const path = require("path");
 // parsing the data into things that the database and client can read
 const bodyParser = require("body-parser");
 
+// reference your routes in your folder system
+const FOF = require("./routes/api/fistToFive");
+const user = require("./routes/api/user");
+const test = require("./routes/api/test");
+
 // construct the server walkway
 const app = express();
 
@@ -40,7 +45,9 @@ require("./config/passport")(passport);
 
 // Now bring in your routes
 // ------
-// put them here when you are ready
+// app.use("/api/user", user);
+app.use("/api/fistToFive", FOF);
+app.use("/api/test/", test);
 // ------
 
 // This is the back up plan if routes aren't matched at all with the code set up above
