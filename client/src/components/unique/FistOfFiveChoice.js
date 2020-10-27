@@ -9,10 +9,11 @@ export default function FistOfFiveChoice({ children, id, className, history, ...
   return (
     <div id={id} className={className}>
       {children}
-
-      <Button className="fist-of-five-button" value={props.dataNumber} onClick={checkBtnValue}>
-        {props.dataNumber}
-      </Button>
+      <div className="btnGrid">
+        <Button className="fist-of-five-button" value={props.dataNumber} onClick={checkBtnValue}>
+          {props.dataNumber}
+        </Button>
+      </div>
     </div>
   );
 }

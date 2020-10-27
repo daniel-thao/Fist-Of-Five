@@ -11,45 +11,47 @@ import FistOfFiveChoice from "../components/unique/FistOfFiveChoice";
 import "./main.css";
 import "./transition.css";
 
+// Import Assets
+import title from "../assets/FistToFive.png";
+
 export default function UserMainPg() {
   // For the CSS Transition package we need a state
   const [bgAni, setBgAni] = useState(true);
   return (
     <>
-      <CSSTransition
+      {/* <CSSTransition
         in={bgAni}
         appear={true}
         timeout={1000}
         classNames="fade"
         onEnter={() => setBgAni(false)}
         // onExit={() => setBgAni(true)}
-      >
-        <div className="background">
-          <div></div>
-          <Section>
-            <h1 className="title">Fist of Five</h1>
-            <h2 className="userNotice">We value your privacy.</h2>
-            <h2 className="userNotice">
-              Only the Instructional team will be able to see the choice you make.
-              <br></br>
-              <br></br>
-              This will help us provide better support moving forward in the class!
-            </h2>
-          </Section>
-
-          <Section className="flex">
-            <FistOfFiveChoice dataNumber="0"></FistOfFiveChoice>
-            <FistOfFiveChoice dataNumber="1"></FistOfFiveChoice>
-            <FistOfFiveChoice dataNumber="2"></FistOfFiveChoice>
-          </Section>
-
-          <Section className="flex">
-            <FistOfFiveChoice dataNumber="3"></FistOfFiveChoice>
-            <FistOfFiveChoice dataNumber="4"></FistOfFiveChoice>
-            <FistOfFiveChoice dataNumber="5"></FistOfFiveChoice>
-          </Section>
-        </div>
-      </CSSTransition>
+      > */}
+      <div className="background">
+        <div></div>
+        <Section>
+          {/* <h1 className="title">Fist of Five</h1> */}
+          <img className="title" src={title}></img>
+          <h2 className="userNotice">We value your privacy.</h2>
+          <h2 className="userNotice">
+            Only the Instructional team will be able to see the choice you make.
+            <br></br>
+            <br></br>
+            This will help us provide better support moving forward in the class!
+          </h2>
+        </Section>
+        <Section>
+          <div className="grid">
+          <FistOfFiveChoice className="choiceZero" dataNumber="0"></FistOfFiveChoice>
+          <FistOfFiveChoice className="choiceOne" dataNumber="1"></FistOfFiveChoice>
+          <FistOfFiveChoice className="choiceTwo" dataNumber="2"></FistOfFiveChoice>
+          <FistOfFiveChoice className="choiceThree" dataNumber="3"></FistOfFiveChoice>
+          <FistOfFiveChoice className="choiceFour" dataNumber="4"></FistOfFiveChoice>
+          <FistOfFiveChoice className="choiceFive" dataNumber="5"></FistOfFiveChoice>
+          </div>
+        </Section>
+      </div>
+      {/* </CSSTransition> */}
     </>
   );
 }
