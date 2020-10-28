@@ -8,3 +8,7 @@ export const getFistToFive = function (numValue) {
       console.log(responseJSON);
     });
 };
+
+export const postFistToFive = function(numValue) {
+  
+}

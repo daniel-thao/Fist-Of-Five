@@ -7,11 +7,11 @@ module.exports = function validateRegistrationInput(data) {
   let errors = {};
 
   // We will convert seemingly empty data into actual empty data
-  // We will also assume that it will have the properties of name // email // password // password2
+  // We will also assume that it will have the properties of name // email // password // confirmPwd
   data.name = !empty(data.name) ? data.name : "";
   data.email = !empty(data.email) ? data.email : "";
   data.password = !empty(data.password) ? data.password : "";
-  data.password2 = !empty(data.password2) ? data.password2 : "";
+  data.confirmPwd = !empty(data.confirmPwd) ? data.confirmPwd : "";
 
   // Using Validator Package, we will do another round of checks and balances
   // if it the name field is empty, send this error msg
@@ -32,8 +32,8 @@ module.exports = function validateRegistrationInput(data) {
   }
 
   // If the second password field is empty, send this error msg
-  if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm password field is required";
+  if (Validator.isEmpty(data.confirmPwd)) {
+    errors.confirmPwd = "Confirm password field is required";
   }
 
   // If the first password field is too short or too lnog, send this error msg
@@ -42,8 +42,8 @@ module.exports = function validateRegistrationInput(data) {
   }
 
   // If the two password fields don't match, send this error msg
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "passwords must match";
+  if (!Validator.equals(data.password, data.confirmPwd)) {
+    errors.confirmPwd = "passwords must match";
   }
 
   // Finally send the errors object and an isValid prop that will see if it is true or false

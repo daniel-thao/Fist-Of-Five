@@ -45,7 +45,7 @@ require("./config/passport")(passport);
 
 // Now bring in your routes
 // ------
-// app.use("/api/user", user);
+app.use("/api/user", user);
 app.use("/api/fistToFive", FOF);
 app.use("/api/test/", test);
 // ------
