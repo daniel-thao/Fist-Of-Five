@@ -21,6 +21,31 @@ export const registerUser = (userData, history) => {
     })
     .then(function (resJSON) {
       console.log(resJSON);
+      history.push("/login");
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+};
+
+export const loginUser = (userData, history) => {
+  fetch("/api/user/login", {
+    method: "POST",
+    body: JSON.stringify(userData),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (resJSON) {
+      console.log(resJSON);
+      // with axios I wouldn't need to do this, but since I'm using fetch I have to
+      if (resJSON.passwordIncorrect) {
+        // For now we will do this until we have our use context
+        return console.log(resJSON.passwordIncorrect);
+      } else {
+        return history.push("/user");
+      }
     })
     .catch(function (err) {
       console.log(err);

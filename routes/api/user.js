@@ -67,10 +67,14 @@ router.post("/register", (req, res) => {
   });
 });
 
+
+// ----------------------------------------
+// LOGIN Post(pseudoGET) Method(NOT updating or creating anything, but need to send info to backend to dbl check and then GET)
+// The reason we do a post here is because we are sending data from the front end to the backend EVEN though, we are just trying to GET the data from the backend, we need to send something from the front end to fact check stuff
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
-  // we are going to see if we had any errors with the validationa and if we do, send back those errors
+  // we are going to see if we had any errors with the validationa and if we do, send back those errors BUT BUT BUT this does not actually stop the success action of this call even if the password is wrong
   if (!isValid) {
     return res.status(400).json(errors);
   }
