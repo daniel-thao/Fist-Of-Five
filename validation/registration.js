@@ -6,6 +6,8 @@ const empty = require("is-empty");
 module.exports = function validateRegistrationInput(data) {
   let errors = {};
 
+  console.log(data.name, data.email, data.password, data.confirmPwd);
+
   // We will convert seemingly empty data into actual empty data
   // We will also assume that it will have the properties of name // email // password // confirmPwd
   data.name = !empty(data.name) ? data.name : "";
@@ -30,15 +32,14 @@ module.exports = function validateRegistrationInput(data) {
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";
   }
+  // If the first password field is too short or too lnog, send this error msg
+  else if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
+    errors.password = " Password must be at least 6 characters and no more than 30";
+  }
 
   // If the second password field is empty, send this error msg
   if (Validator.isEmpty(data.confirmPwd)) {
     errors.confirmPwd = "Confirm password field is required";
-  }
-
-  // If the first password field is too short or too lnog, send this error msg
-  if ((!Validator.isLength(data.password), { min: 6, max: 30 })) {
-    errors.password = " Password must be at least 6 characters and no more than 30";
   }
 
   // If the two password fields don't match, send this error msg

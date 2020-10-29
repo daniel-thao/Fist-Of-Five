@@ -20,8 +20,8 @@ const validateRegistrationInput = require("../../validation/registration")
 const validateLoginInput = require("../../validation/login");
 
 // Load the User Model you created in the Models Folder
+// const db = require("../../models");
 const db = require("../../models");
-
 
 // Decodes the token that the Front End will send to us. I guess this token has an id property
 function deCoding(token) {
@@ -46,7 +46,7 @@ router.post("/register", (req, res) => {
     if (user) {
       return res.status(400).json({ email: "email already exists" });
     } else {
-      const newUser = new User({
+      const newUser = new db.User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,

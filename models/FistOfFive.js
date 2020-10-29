@@ -16,4 +16,4 @@ const FistToFiveSchema = new Schema({
 
 // Then we need to export the schema
 // Exporting the Variable Users which also = this new Fist of Five Schemaa
-module.exports = FistOfFive = mongoose.model("FistToFive", FistToFiveSchema);
+module.exports = FistOfFive = mongoose.model("fisttofives", FistToFiveSchema);
