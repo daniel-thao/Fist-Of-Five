@@ -18,33 +18,33 @@ module.exports = function validateRegistrationInput(data) {
   // Using Validator Package, we will do another round of checks and balances
   // if it the name field is empty, send this error msg
   if (Validator.isEmpty(data.name)) {
-    errors.name = "Name field is required";
+    errors.name= "Name field is required";
   }
 
   // If the email field is empty or if it isn't in email format, send this error msg
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email Field is required";
+    errors.email= "Email Field is required";
   } else if (Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email= "Email is invalid";
   }
 
   // If the first passwrod field is empty, send this error msg
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password= "Password field is required";
   }
   // If the first password field is too short or too lnog, send this error msg
   else if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = " Password must be at least 6 characters and no more than 30";
+    errors.password= " Password must be at least 6 characters and no more than 30";
   }
 
   // If the second password field is empty, send this error msg
   if (Validator.isEmpty(data.confirmPwd)) {
-    errors.confirmPwd = "Confirm password field is required";
+    errors.confirmPwd= "Confirm password field is required";
   }
 
   // If the two password fields don't match, send this error msg
   if (!Validator.equals(data.password, data.confirmPwd)) {
-    errors.confirmPwd = "passwords must match";
+    errors.confirmPwd= "passwords must match";
   }
 
   // Finally send the errors object and an isValid prop that will see if it is true or false

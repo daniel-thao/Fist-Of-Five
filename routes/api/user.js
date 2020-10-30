@@ -16,7 +16,7 @@ const Validator = require("validator");
 const router = express.Router();
 
 // // Load validation methods you created for the input data coming through this route
-const validateRegistrationInput = require("../../validation/registration")
+const validateRegistrationInput = require("../../validation/registration");
 const validateLoginInput = require("../../validation/login");
 
 // Load the User Model you created in the Models Folder
@@ -37,14 +37,15 @@ router.post("/register", (req, res) => {
 
   // We WANT isValid to be true, so if it is false, we will send an error back to the front end
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ error: errors });
   }
 
   // OTHERWISE go into the Database and the Collection of User
   db.User.findOne({ email: req.body.email }).then((user) => {
     // If the decoded JWT Token's user email matches something in the db, then send this error msg, OTHERWISE make a new user
     if (user) {
-      return res.status(400).json({ email: "email already exists" });
+      const exists = "email already exists";
+      return res.status(400).json({ error: { exists } });
     } else {
       const newUser = new db.User({
         name: req.body.name,
@@ -66,7 +67,6 @@ router.post("/register", (req, res) => {
     }
   });
 });
-
 
 // ----------------------------------------
 // LOGIN Post(pseudoGET) Method(NOT updating or creating anything, but need to send info to backend to dbl check and then GET)

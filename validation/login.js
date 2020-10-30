@@ -23,14 +23,14 @@ module.exports = function validateLoginInput(data) {
   // ----
   // Validator has these methods and it will double check to see if the data being sent is actually empty and if it is in email format
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.emailError = "Email field is required";
   } else if (Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.emailError = "Email is invalid";
   }
 
   // Here we will do the same thing with the password
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.passwordError = "Password field is required";
   }
 
   // Here we will send back the errors object with whatever info we have on the recieved data and we will send a isValid property which should either be false or true, and the result we are looking for is true(which means that there were no errors)

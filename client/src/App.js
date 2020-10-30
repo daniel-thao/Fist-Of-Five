@@ -6,15 +6,23 @@ import UserMainPg from "./pages/UserMainPg";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
+// Import your custom PRIVATE ROUTE
+import PrivateRoute from "./privateRoute/PrivateRoute";
+
+//import your REACT CONTEXTS for logging in and stuff
+import { Auth } from "./routes/authentication/userAuth";
+
 function App() {
   return (
-    <Router>
-      <Route exact path="/" component={Register}></Route>
-      <Route exact path="/login" component={Login}></Route>
-      <Switch>
-        <Route exact path="/user" component={UserMainPg}></Route>
-      </Switch>
-    </Router>
+    <Auth>
+      <Router>
+        <Route exact path="/" component={Register}></Route>
+        <Route exact path="/login" component={Login}></Route>
+        <Switch>
+          <PrivateRoute exact path="/user" component={UserMainPg}></PrivateRoute>
+        </Switch>
+      </Router>
+    </Auth>
   );
 }
 
