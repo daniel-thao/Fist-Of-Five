@@ -29,7 +29,8 @@ function deCoding(token) {
   return id.id;
 }
 
-// ----------------------------------------
+// ====================================================================================================================================================================================
+
 // REGISTRATION Post Method(Create a user basically)
 router.post("/register", (req, res) => {
   // here we deconstruct the properties that this function gives us and the info that it is analyzing is the "Request's Body" of data
@@ -68,7 +69,8 @@ router.post("/register", (req, res) => {
   });
 });
 
-// ----------------------------------------
+// ====================================================================================================================================================================================
+
 // LOGIN Post(pseudoGET) Method(NOT updating or creating anything, but need to send info to backend to dbl check and then GET)
 // The reason we do a post here is because we are sending data from the front end to the backend EVEN though, we are just trying to GET the data from the backend, we need to send something from the front end to fact check stuff
 router.post("/login", (req, res) => {
@@ -97,6 +99,7 @@ router.post("/login", (req, res) => {
           id: user.id,
           name: user.name,
         };
+
         jwt.sign(
           payload,
           keys.secretOrKey,
@@ -111,6 +114,25 @@ router.post("/login", (req, res) => {
         return res.status(400).json({ passwordIncorrect: "Password incorrect" });
       }
     });
+  });
+});
+
+// ====================================================================================================================================================================================
+
+router.post("/adminCheck", (req, res) => {
+  const id = req.body.id;
+  // based on the id, check to see if there is a user in DB
+  db.User.findOne({ _id: id }).then((user) => {
+    // Check if the user even exists in the db
+    if (!user) {
+      return res.status(404).json({ notUser: "ALERT Fake Acc" });
+    } else if (user.admin === false) {
+      return res.json({ admin: false });
+    } else if (user.admin === true) {
+      return res.json({ admin: true });
+    } else {
+      return;
+    }
   });
 });
 

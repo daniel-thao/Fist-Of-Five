@@ -1,3 +1,9 @@
+// =============
+// I'm not even sure I need this javascript tbh because I don't think I need a global authorization header for every fetch request --> I can't think of a need for it, but if ther is lmk
+// =============
+
+
+
 // import React, { useContext } from "react";
 
 // // SOOO INstead of doing global axios mimic with Fetch, I'm going to just use the local storage to handle this.

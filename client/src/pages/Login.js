@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-// test imports, we have to deconstruct it
-// import { loginUser } from "../routes/authentication/userAuth";
-
+// we have to deconstruct this function which is a react context because there is no default export at this location
 import { AuthContext } from "../routes/authentication/userAuth";
 
 export default function Login({ history }) {
@@ -14,10 +12,29 @@ export default function Login({ history }) {
   useEffect(
     function () {
       if (user) {
-        history.push("/user");
+        fetch("/api/user/adminCheck", {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: { "Content-Type": "application/json" },
+        })
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (resJSON) {
+            if (resJSON.admin) {
+              history.push("/admin");
+            } else {
+              history.push("/user");
+            }
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      } else {
+        return;
       }
     },
-    [user, history]
+    [user]
   );
 
   return (

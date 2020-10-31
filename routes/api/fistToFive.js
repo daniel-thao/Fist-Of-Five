@@ -16,9 +16,12 @@ router.post("/", function (req, res) {
   db.FistOfFive.create(req.body)
     // Then connect it to the specific user
     .then(function (dbFOFChoice) {
+      console.log(req.body.token);
+      console.log(dbFOFChoice._id);
+      const userID = deCoding(req.body.token);
       //in here we are going to make another variable = the decoded req.body.token
       //Then we will eventually find the user and add this choice to their fist To Five list
-      res.json(dbFOFChoice);
+      return db.User.findOneAndUpdate({ _id: userID }, { $push: { fistOfFive: dbFOFChoice._id } }, { new: true });
     })
     .catch(function (err) {
       res.json(err);

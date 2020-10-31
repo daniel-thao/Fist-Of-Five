@@ -16,6 +16,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -28,7 +32,7 @@ const UserSchema = new Schema({
   ],
 });
 
-const User = mongoose.model("users", UserSchema)
+const User = mongoose.model("users", UserSchema);
 
 // Then we need to export the schema
 // Exporting the Variable Users which also = this new UserSchema

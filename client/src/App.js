@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserMainPg from "./pages/UserMainPg";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import UserAdmin from "./pages/UserAdmin";
 
 // Import your custom PRIVATE ROUTE
 import PrivateRoute from "./privateRoute/PrivateRoute";
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/login" component={Login}></Route>
         <Switch>
           <PrivateRoute exact path="/user" component={UserMainPg}></PrivateRoute>
+          <PrivateRoute exact path="/admin" component={UserAdmin}></PrivateRoute>
         </Switch>
       </Router>
     </Auth>

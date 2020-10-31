@@ -21,9 +21,9 @@ export const registerUser = (setErrors) => (userData, history) => {
       return response.json();
     })
     .then(function (resJSON) {
-      console.log(resJSON);
+      // console.log(resJSON);
       if (resJSON.error) {
-        console.log(resJSON.error);
+        // console.log(resJSON.error);
         setErrors(resJSON.error);
       } else {
         history.push("/login");
@@ -45,7 +45,7 @@ export const loginUser = (setUser, setErrors) => (userData, history) => {
       return response.json();
     })
     .then(function (resJSON) {
-      console.log(resJSON);
+      // console.log(resJSON);
       // with axios I wouldn't need to do this, but since I'm using fetch I have to
       if (resJSON.passwordIncorrect) {
         // // For now we will do this until we have our use context
@@ -53,9 +53,9 @@ export const loginUser = (setUser, setErrors) => (userData, history) => {
         // setErrors(err.response.data);
       } else {
         // set the
-        console.log(resJSON);
+        // console.log(resJSON);
         if (resJSON.success) {
-          console.log(resJSON.token);
+          // console.log(resJSON.token);
           const token = resJSON.token;
           // const { token } = resJSON.token;
           localStorage.setItem("jwtToken", token);
@@ -82,7 +82,7 @@ export const logoutUser = (setUser) => {
 
 
 export function useAuth() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [errors, setErrors] = useState({});
   useEffect(() => {
     if (localStorage.jwtToken) {
@@ -106,8 +106,8 @@ export function useAuth() {
   }, []);
 
   return {
-    user,
-    errors,
+    user : user,
+    errors: errors,
     loginUser: loginUser(setUser, setErrors),
     logoutUser: () => logoutUser(setUser),
     registerUser: registerUser(setErrors),
