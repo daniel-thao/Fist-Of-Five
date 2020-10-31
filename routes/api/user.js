@@ -136,4 +136,24 @@ router.post("/adminCheck", (req, res) => {
   });
 });
 
+router.get("/adminReveal", (req, res) => {
+  db.User.find({}).then((user) => {
+    // console.log(user);
+    for (i = 0; i < user.length; i++) {
+      console.log(user[i].admin);
+      if (user[i].admin === false) {
+          for(j=0; j< user[i].fistToFive.length; j++) {
+            console.log(user[i].fistToFive[j]);
+            const FOFChoice = user[i].fistToFive[j]
+            db.FistToFive.findById(FOFChoice).then(function(choice) {
+              console.log(choice);
+              const userChoices = {choice : choice.number}
+              res.json()
+            })
+          }
+      }
+    }
+  });
+});
+
 module.exports = router;

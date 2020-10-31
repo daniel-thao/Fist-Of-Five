@@ -24,10 +24,10 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  fistOfFive: [
+  fistToFive: [
     {
       type: Schema.Types.ObjectId,
-      ref: "FistOfFive",
+      ref: "fisttofive",
     },
   ],
 });

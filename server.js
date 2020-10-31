@@ -33,7 +33,12 @@ const db = require("./config/keys").mongoURI;
 
 // Actually connect to the database via Mongoose
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  // We have the useNewUrlParser and useFindAndModify booleans because of the new changes to MongoDB finally starting to catch up and rename the functions in mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB successfully connected"))
   .catch((err) => console.log(err));
 
@@ -52,7 +57,6 @@ app.use("/api/test/", test);
 
 // This is the back up plan if routes aren't matched at all with the code set up above
 app.use("*", (req, res) => res.sendFile(path.join(__dirname, "../client/build/index.html")));
-
 
 // Set up the PORT that this app will run on
 

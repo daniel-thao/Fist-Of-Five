@@ -3,6 +3,9 @@ import Button from "../regular/Button";
 
 import { getFistToFive } from "../../routes/fistToFiveChoice";
 
+// import Dayjs so we can date check and delete very old data in the future
+import dayJS from "dayjs";
+
 export default function FistOfFiveChoice({ children, id, className, history, ...props }) {
   function checkBtnValue(btn) {
     console.log(btn.target.value);
@@ -10,6 +13,9 @@ export default function FistOfFiveChoice({ children, id, className, history, ...
       method: "POST",
       body: JSON.stringify({
         number: btn.target.value,
+        token : localStorage.jwtToken.substr(7),
+        // We have to have stored in this format for future uses because the diff() in day parses in this format
+        date: dayJS().format("YYYY-MM-DD")
       }),
       headers: {
         "Content-Type": "application/json",

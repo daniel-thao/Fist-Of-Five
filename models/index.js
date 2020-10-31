@@ -1,4 +1,4 @@
 module.exports = {
     User: require("./User"),
-    FistOfFive: require("./FistOfFive")
+    FistToFive: require("./FistToFive")
 }

@@ -8,6 +8,10 @@ const FistToFiveSchema = new Schema({
     type: Number,
     required: true,
   },
+  date: {
+    type: String,
+    required: true
+  },
   systemDate: {
     type: Date,
     default: Date.now,
@@ -16,4 +20,4 @@ const FistToFiveSchema = new Schema({
 
 // Then we need to export the schema
 // Exporting the Variable Users which also = this new Fist of Five Schemaa
-module.exports = FistOfFive = mongoose.model("fisttofives", FistToFiveSchema);
+module.exports = FistToFive = mongoose.model("fisttofives", FistToFiveSchema);
