@@ -139,17 +139,17 @@ router.post("/adminCheck", (req, res) => {
 router.get("/adminReveal", (req, res) => {
   db.User.find({}).then(function(user) {
 
-    const nonAdminUser = []
+    const nonAdminUsersAndChoices = []
     for(i = 0; i < user.length; i++) {
-      console.log(user[i]);
+      // console.log(user[i]);
       const userNameAndFistToFive = {};
       if(user[i].admin === false) {
         userNameAndFistToFive.name = user[i].name;
         userNameAndFistToFive.fistToFive = user[i].fistToFive;
-        nonAdminUser.push(userNameAndFistToFive);
+        nonAdminUsersAndChoices.push(userNameAndFistToFive);
       }
     }
-    res.json(nonAdminUser);
+    res.json(nonAdminUsersAndChoices);
     // // need this forloop to gather every single user's data
     // for (i = 0; i < user.length; i++) {
     //   // So long as they are not an admin
