@@ -28,14 +28,15 @@ export const populate = function (setFistToFive) {
         nameAndChoices.push(resJSON[i].name);
 
         for (let j = 0; j < resJSON[i].fistToFive.length; j++) {
-          console.log(j);
           nameAndChoices.push(
             fetch(`/api/fistToFive/${resJSON[i].fistToFive[j]}`)
               .then(function (response) {
                 return response.json();
               })
               .then(function (responseJSON) {
+                console.log(responseJSON);
                 const numberAndDate = `${responseJSON[j].number}, ${responseJSON[j].date}`
+                const justNumber = responseJSON[j].number;
                 return numberAndDate;
               })
           );
