@@ -28,18 +28,21 @@ export const populate = function (setFistToFive) {
         nameAndChoices.push(resJSON[i].name);
 
         for (let j = 0; j < resJSON[i].fistToFive.length; j++) {
+          console.log(j);
           nameAndChoices.push(
             fetch(`/api/fistToFive/${resJSON[i].fistToFive[j]}`)
               .then(function (response) {
                 return response.json();
               })
               .then(function (responseJSON) {
-                return responseJSON[j].number;
+                const numberAndDate = `${responseJSON[j].number}, ${responseJSON[j].date}`
+                return numberAndDate;
               })
           );
         }
 
         Promise.all(nameAndChoices).then(function (resolve) {
+          console.log(resolve);
           allUserChoicesAndNumbers.push(resolve);
           return setFistToFive({ updateState: allUserChoicesAndNumbers });
         });
