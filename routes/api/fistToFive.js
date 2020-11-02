@@ -37,7 +37,7 @@ router.post("/", function (req, res) {
 
 router.get("/", function (req, res) {
     // res.json({message: "JIJIJIIJIJI"})
-  db.FistToFive.find()
+  db.FistToFive.find({})
     .then(function (choices) {
       res.json(choices);
     })
@@ -45,6 +45,12 @@ router.get("/", function (req, res) {
       res.json(err);
     });
 });
+
+router.get("/:choiceID", function(req,res) {
+  db.FistToFive.where(req.params.choiceID).then(function(number) {
+    res.json(number);
+  })
+})
 
 // This is just to reset the db
 router.delete("/", function(req,res) {

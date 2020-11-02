@@ -137,23 +137,50 @@ router.post("/adminCheck", (req, res) => {
 });
 
 router.get("/adminReveal", (req, res) => {
-  db.User.find({}).then((user) => {
-    // console.log(user);
-    for (i = 0; i < user.length; i++) {
-      console.log(user[i].admin);
-      if (user[i].admin === false) {
-          for(j=0; j< user[i].fistToFive.length; j++) {
-            console.log(user[i].fistToFive[j]);
-            const FOFChoice = user[i].fistToFive[j]
-            db.FistToFive.findById(FOFChoice).then(function(choice) {
-              console.log(choice);
-              const userChoices = {choice : choice.number}
-              res.json()
-            })
-          }
+  db.User.find({}).then(function(user) {
+
+    const nonAdminUser = []
+    for(i = 0; i < user.length; i++) {
+      console.log(user[i]);
+      const userNameAndFistToFive = {};
+      if(user[i].admin === false) {
+        userNameAndFistToFive.name = user[i].name;
+        userNameAndFistToFive.fistToFive = user[i].fistToFive;
+        nonAdminUser.push(userNameAndFistToFive);
       }
     }
+    res.json(nonAdminUser);
+    // // need this forloop to gather every single user's data
+    // for (i = 0; i < user.length; i++) {
+    //   // So long as they are not an admin
+    //   if (user[i].admin === false) {
+    //     // If they are not, then gather all of their fist to five choice values and dates of when they said this choice
+    //     for (j = 0; j < user[i].fistToFive.length; j++) {
+    //       console.log(user[i].fistToFive[j]);
+    //       const FOFChoice = user[i].fistToFive[j];
+    //       db.FistToFive.findById(FOFChoice).then(function (choice) {
+    //         console.log(choice.number, choice.date);
+    //         const choiceAndDate = {};
+    //         const number = choice.number;
+    //         const date = choice.date;
+
+    //         choiceAndDate.number = number;
+    //         choiceAndDate.date = date;
+    //         console.log(choiceAndDate);
+    //         // returningArray.push(choiceAndDate);
+    //         res.json(choiceAndDate);
+    //       });
+    //     }
+    //   }
+    //   // console.log(returningArray, "  This is the choice and date object");
+    // }
   });
 });
+
+// I want to find the users and their choices and return something like this back to the front end
+// [
+//   { name: "name", choice: [{ number: 1, date: "" }] },
+//   { name: "name", choice: [{ number: 1, date: "" }] },
+// ];
 
 module.exports = router;
