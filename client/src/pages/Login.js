@@ -83,10 +83,15 @@ export default function Login({ history }) {
         </div>
         <div className="button marginTopM">
           <button type="submit" className="buttonText">
-            Sign up
+            Login
           </button>
         </div>
       </form>
+        <div className="button marginTopM">
+          <button onClick={()=> history.push("/")}>
+            Register
+          </button>
+        </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 // import { CSSTransition } from "react-transition-group";
 
 // Bring in the REGULAR Components
@@ -14,9 +14,13 @@ import "./transition.css";
 // Import Assets
 import title from "../assets/FistToFive.png";
 
+// Import authorization context
+import {AuthContext} from "../routes/authentication/userAuth";
+
 export default function UserMainPg() {
   // For the CSS Transition package we need a state
   // const [bgAni, setBgAni] = useState(true);
+  const { logoutUser } = useContext(AuthContext);
   return (
     <>
       {/* <CSSTransition
@@ -28,7 +32,7 @@ export default function UserMainPg() {
         // onExit={() => setBgAni(true)}
       > */}
       <div className="background">
-        <div></div>
+      <button onClick={logoutUser}>Logout</button>
         <Section>
           {/* <h1 className="title">Fist of Five</h1> */}
           <img className="title" src={title} alt="Fist To Five"></img>

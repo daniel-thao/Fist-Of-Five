@@ -13,17 +13,14 @@ export default function Register({ history }) {
   // Set our object state
   const [newUser, setNewUser] = useState({ name: "", email: "", password: "", confirmPwd: "" });
 
-  useEffect(
-    function () {
-      // console.log(name, email, password, confirmPwd)
-      console.log(newUser);
+  useEffect(() => {
+    // console.log(name, email, password, confirmPwd)
+    // console.log(newUser);
 
-      if (user) {
-        history.push("/login");
-      }
-    },
-    [newUser]
-  );
+    if (user) {
+      history.push("/login");
+    }
+  }, [user]);
 
   return (
     <div>

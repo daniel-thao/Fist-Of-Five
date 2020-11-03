@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 //You can import Axios at this point if you wanted to, but I will be using JS vanilla Fetch
 
+// import the decoding npm package
 import jwt_decode from "jwt-decode";
-// Here we imported a global util of axios but How ot figure it out using fetch
-import setAuthTokens from "../../utils/setAuthFetchOptions";
-import { set } from "mongoose";
 
 // const [jwtToken, setJwtToken] = useState();
 // setAuthToken("daniel");

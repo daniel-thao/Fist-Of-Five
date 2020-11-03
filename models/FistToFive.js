@@ -12,6 +12,10 @@ const FistToFiveSchema = new Schema({
     type: String,
     required: true
   },
+  dateKey: {
+    type: String,
+    required: true
+  },
   systemDate: {
     type: Date,
     default: Date.now,

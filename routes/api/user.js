@@ -141,7 +141,7 @@ router.get("/adminReveal", (req, res) => {
 
     const nonAdminUsersAndChoices = []
     for(i = 0; i < user.length; i++) {
-      console.log(user[i]);
+      // console.log(user[i]);
       const userNameAndFistToFive = {};
       if(user[i].admin === false) {
         userNameAndFistToFive.name = user[i].name;
