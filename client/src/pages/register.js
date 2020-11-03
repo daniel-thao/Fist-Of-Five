@@ -14,13 +14,10 @@ export default function Register({ history }) {
   const [newUser, setNewUser] = useState({ name: "", email: "", password: "", confirmPwd: "" });
 
   useEffect(() => {
-    // console.log(name, email, password, confirmPwd)
-    // console.log(newUser);
-
     if (user) {
       history.push("/login");
     }
-  }, [user]);
+  }, [user, history]);
 
   return (
     <div>

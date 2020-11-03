@@ -1,0 +1,11 @@
+.seperateUsers {
+    padding: 1em;
+    margin: 1em;
+    width: auto;
+    background-color: lightgreen;
+}
+
+.container {
+    display: flex;
+    flex-flow: wrap;
+}

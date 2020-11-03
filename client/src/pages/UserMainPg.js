@@ -15,7 +15,7 @@ import "./transition.css";
 import title from "../assets/FistToFive.png";
 
 // Import authorization context
-import {AuthContext} from "../routes/authentication/userAuth";
+import { AuthContext } from "../routes/authentication/userAuth";
 
 export default function UserMainPg() {
   // For the CSS Transition package we need a state
@@ -32,7 +32,7 @@ export default function UserMainPg() {
         // onExit={() => setBgAni(true)}
       > */}
       <div className="background">
-      <button onClick={logoutUser}>Logout</button>
+        <button onClick={logoutUser}>Logout</button>
         <Section>
           {/* <h1 className="title">Fist of Five</h1> */}
           <img className="title" src={title} alt="Fist To Five"></img>
@@ -46,12 +46,12 @@ export default function UserMainPg() {
         </Section>
         <Section>
           <div className="grid">
-          <FistOfFiveChoice className="choiceZero" dataNumber="0"></FistOfFiveChoice>
-          <FistOfFiveChoice className="choiceOne" dataNumber="1"></FistOfFiveChoice>
-          <FistOfFiveChoice className="choiceTwo" dataNumber="2"></FistOfFiveChoice>
-          <FistOfFiveChoice className="choiceThree" dataNumber="3"></FistOfFiveChoice>
-          <FistOfFiveChoice className="choiceFour" dataNumber="4"></FistOfFiveChoice>
-          <FistOfFiveChoice className="choiceFive" dataNumber="5"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceZero" dataNumber="0"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceOne" dataNumber="1"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceTwo" dataNumber="2"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceThree" dataNumber="3"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceFour" dataNumber="4"></FistOfFiveChoice>
+            <FistOfFiveChoice className="choiceFive" dataNumber="5"></FistOfFiveChoice>
           </div>
         </Section>
       </div>

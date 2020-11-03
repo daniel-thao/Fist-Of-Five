@@ -78,9 +78,8 @@ export const logoutUser = (setUser) => {
   setUser(null);
 };
 
-
 export function useAuth() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [errors, setErrors] = useState({});
   useEffect(() => {
     if (localStorage.jwtToken) {
@@ -104,8 +103,8 @@ export function useAuth() {
   }, []);
 
   return {
-    user : user,
-    errors: errors,
+    user,
+    errors,
     loginUser: loginUser(setUser, setErrors),
     logoutUser: () => logoutUser(setUser),
     registerUser: registerUser(setErrors),
@@ -116,9 +115,7 @@ export function Auth({ children }) {
   const { user, errors, loginUser, logoutUser, registerUser } = useAuth();
 
   return (
-    <AuthContext.Provider
-      value={{ user, errors, loginUser, logoutUser, registerUser }}
-    >
+    <AuthContext.Provider value={{ user, errors, loginUser, logoutUser, registerUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -21,10 +21,10 @@ module.exports = function validateLoginInput(data) {
 
   // Here we will decide what to do with the changed property that occured up above
   // ----
-  // Validator has these methods and it will double check to see if the data being sent is actually empty and if it is in email format
+  // Validator has these methods and it will double check to see if the data being sent is actually empty and if it is in email format, had to add the === portion here as well in order to get my code to work correctly
   if (Validator.isEmpty(data.email)) {
     errors.emailError = "Email field is required";
-  } else if (Validator.isEmail(data.email)) {
+  } else if (Validator.isEmail(data.email) === false) {
     errors.emailError = "Email is invalid";
   }
 

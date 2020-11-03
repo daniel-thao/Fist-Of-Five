@@ -9,33 +9,30 @@ export default function Login({ history }) {
   const [userCredentials, setUserCredentials] = useState({ email: "", password: "" });
   const { user, loginUser, errors = {} } = useContext(AuthContext);
 
-  useEffect(
-    function () {
-      if (user) {
-        fetch("/api/user/adminCheck", {
-          method: "POST",
-          body: JSON.stringify(user),
-          headers: { "Content-Type": "application/json" },
+  useEffect(function () {
+    if (user) {
+      fetch("/api/user/adminCheck", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(function (res) {
+          return res.json();
         })
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (resJSON) {
-            if (resJSON.admin) {
-              history.push("/admin");
-            } else {
-              history.push("/user");
-            }
-          })
-          .catch(function (err) {
-            console.log(err);
-          });
-      } else {
-        return;
-      }
-    },
-    [user]
-  );
+        .then(function (resJSON) {
+          if (resJSON.admin) {
+            history.push("/admin");
+          } else {
+            history.push("/user");
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    } else {
+      return;
+    }
+  }, [user, history]);
 
   return (
     <div>
@@ -87,11 +84,9 @@ export default function Login({ history }) {
           </button>
         </div>
       </form>
-        <div className="button marginTopM">
-          <button onClick={()=> history.push("/")}>
-            Register
-          </button>
-        </div>
+      <div className="button marginTopM">
+        <button onClick={() => history.push("/")}>Register</button>
+      </div>
     </div>
   );
 }
