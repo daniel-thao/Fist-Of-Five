@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Import the pages you want in your React APP
 import UserMainPg from "./pages/UserMainPg";
-import Register from "./pages/Register";
+import Register from "./pages/Register.js";
 import Login from "./pages/Login";
 import UserAdmin from "./pages/UserAdmin";
 
