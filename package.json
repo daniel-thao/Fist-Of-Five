@@ -7,7 +7,8 @@
   "author": "<daniel.ntaj.thao@gmail.com>",
   "license": "MIT",
   "engine": {
-    "node": "14.x"
+    "node": "14.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
