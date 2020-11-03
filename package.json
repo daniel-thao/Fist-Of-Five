@@ -6,6 +6,9 @@
   "repository": "git@github.com:daniel-thao/Fist-Of-Five.git",
   "author": "<daniel.ntaj.thao@gmail.com>",
   "license": "MIT",
+  "engine": {
+    "node": "12.x"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
