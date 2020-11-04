@@ -5,8 +5,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 // Security through JWT
 const passport = require("passport");
-// Getting folder paths in computer
-const path = require("path");
+// // Getting folder paths in computer
+// const path = require("path");
 // parsing the data into things that the database and client can read
 const bodyParser = require("body-parser");
 
