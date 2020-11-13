@@ -39,7 +39,7 @@ mongoose
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB successfully connected"))
+  .then(() => console.log("\n\nMongoDB successfully connected\n\n"))
   .catch((err) => console.log(err));
 
 // Now init Passport middleware for future User validation
