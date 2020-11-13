@@ -27,6 +27,9 @@ app.use(
 app.use(bodyParser.json());
 
 // Usually would put a env variable for prod or dev here just in case, but not going to be using during this development
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Configure the DB variable to the database in Mongo Atlas cloud
 const db = require("./config/keys").mongoURI;
