@@ -93,6 +93,11 @@ export default function Register({ history }) {
           </button>
         </div>
       </form>
+      <div className="button marginTopM">
+          <button type="submit" className="buttonText" onClick={history.push("/login")}>
+            Already Have Account
+          </button>
+        </div>
       <div>{errors.exists}</div>
     </div>
   );
