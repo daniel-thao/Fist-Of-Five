@@ -94,10 +94,17 @@ export default function Register({ history }) {
         </div>
       </form>
       <div className="button marginTopM">
-          <button type="submit" className="buttonText" onClick={history.push("/login")}>
-            Already Have Account
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="buttonText"
+          onClick={function (e) {
+            e.preventDefault();
+            history.push("/login");
+          }}
+        >
+          Already Have Account
+        </button>
+      </div>
       <div>{errors.exists}</div>
     </div>
   );
