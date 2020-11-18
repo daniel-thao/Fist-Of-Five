@@ -33,6 +33,7 @@ export default function UserMainPg() {
 
   function displayImg(event) {
     // console.log(event.currentTarget.className);
+    // console.log(imgZero.current);
 
     switch (event.currentTarget.className) {
       case "choiceZero":
@@ -59,7 +60,7 @@ export default function UserMainPg() {
   }
 
   function hideImg(event) {
-    console.log(event.currentTarget.className);
+    // console.log(event.currentTarget.className);
     switch (event.currentTarget.className) {
       case "choiceZero":
         imgZero.current.classList.remove(CSS.show);
