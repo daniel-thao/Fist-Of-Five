@@ -105,7 +105,7 @@ export default function UserMainPg() {
           <Section>
             <div className="grid">
               <div ref={imgZero} className={`${CSS.hide} imgZero ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+                <img className={CSS.imgZeroParams} src={"https://images.unsplash.com/photo-1535478044878-3ed83d5456ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEwMjc5NH0&auto=format&fit=crop&w=1369&q=80"}></img>
               </div>
 
               <FistOfFiveChoice
@@ -116,7 +116,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgOne} className={`${CSS.hide} imgOne ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+              <img src={"https://images.unsplash.com/photo-1535478044878-3ed83d5456ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEwMjc5NH0&auto=format&fit=crop&w=1369&q=80"}></img>
               </div>
               <FistOfFiveChoice
                 className="choiceOne"
@@ -126,7 +126,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgTwo} className={`${CSS.hide} imgTwo ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+                <img className ={CSS.imgTwoParams} src={"https://images.unsplash.com/photo-1495896138760-293144e6b1d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80"}></img>
               </div>
               <FistOfFiveChoice
                 className="choiceTwo"
@@ -136,7 +136,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgThree} className={`${CSS.hide} imgThree ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+                <img className={CSS.imgThreeParams} src={"https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1962&q=80"}></img>
               </div>
 
               <FistOfFiveChoice
@@ -147,7 +147,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgFour} className={`${CSS.hide} imgFour ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+                <img className={CSS.imgFourParams} src={"https://images.unsplash.com/photo-1588654364310-34cbc935f792?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"}></img>
               </div>
 
               <FistOfFiveChoice
@@ -158,7 +158,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgFive} className={`${CSS.hide} imgFive ${CSS.imgParams}`}>
-                <img className={`title`} src={title}></img>
+                <img className={CSS.imgFiveParams} src={"https://images.unsplash.com/photo-1542300058-b94b8ab7411b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"}></img>
               </div>
 
               <FistOfFiveChoice

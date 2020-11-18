@@ -61,7 +61,7 @@
 }
 
 .choiceZero {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -77,7 +77,7 @@
 }
 
 .choiceOne {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -93,7 +93,7 @@
 }
 
 .choiceTwo {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 3;
   grid-column-end: 4;
@@ -109,7 +109,7 @@
 }
 
 .choiceThree {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 4;
   grid-column-end: 5;
@@ -125,7 +125,7 @@
 }
 
 .choiceFour {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 5;
   grid-column-end: 6;
@@ -141,7 +141,7 @@
 }
 
 .choiceFive {
-  background: lightgreen;
+  /* background: lightgreen; */
   z-index: 3;
   grid-column-start: 6;
   grid-column-end: 7;
