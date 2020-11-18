@@ -27,7 +27,7 @@
 }
 
 .userNotice {
-  font-size: 2em;
+  font-size: 1em;
   text-align: center;
   padding: 1em 0em 1em 0em;
   font-family: "PT Sans", sans-serif;
@@ -68,10 +68,24 @@
   grid-row-end: 2;
 }
 
+.imgZero {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
 .choiceOne {
   background: lightgreen;
   grid-column-start: 2;
   grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.imgOne {
+  grid-column-start: 1;
+  grid-column-end: 7;
   grid-row-start: 2;
   grid-row-end: 3;
 }
@@ -84,10 +98,24 @@
   grid-row-end: 4;
 }
 
+.imgTwo {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
 .choiceThree {
   background: lightgreen;
   grid-column-start: 4;
   grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.imgThree {
+  grid-column-start: 1;
+  grid-column-end: 7;
   grid-row-start: 4;
   grid-row-end: 5;
 }
@@ -100,9 +128,23 @@
   grid-row-end: 6;
 }
 
+.imgFour {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
 .choiceFive {
   background: lightgreen;
   grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+.imgFive {
+  grid-column-start: 1;
   grid-column-end: 7;
   grid-row-start: 6;
   grid-row-end: 7;

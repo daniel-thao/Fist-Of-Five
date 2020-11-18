@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 // test imports, we have to deconstruct it
 // import { registerUser } from "../routes/authentication/userAuth";
 
+// Import module CSS
+import CSS from "./register-login.module.css";
+
 // import the Auth context
 import { AuthContext } from "../routes/authentication/userAuth";
 
@@ -20,18 +23,19 @@ export default function Register({ history }) {
   }, [user, history]);
 
   return (
-    <div>
+    <div className={`${CSS.flex} ${CSS.centeringForm}`}>
       Register Here
       <form
-        className="centerContent "
+        className={`${CSS.registerForm}`}
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
           registerUser(newUser, history);
         }}
       >
-        <div>
+        <div className={`${CSS.flex} ${CSS.marginS}`}>
           <input
+            className={CSS.inputs}
             onChange={(event) => setNewUser({ ...newUser, name: event.target.value })}
             value={newUser.name}
             error={errors.name}
@@ -41,11 +45,15 @@ export default function Register({ history }) {
             //   invalid: errors.name,
             // })}
           />
-          <label htmlFor="name">Name</label>
+          <label className={CSS.labels} htmlFor="name">
+            Name
+          </label>
           <p className="errorText">{errors.name}</p>
         </div>
-        <div>
+
+        <div className={`${CSS.flex} ${CSS.marginS}`}>
           <input
+            className={CSS.inputs}
             onChange={(event) => setNewUser({ ...newUser, email: event.target.value })}
             value={newUser.email}
             error={errors.email}
@@ -55,11 +63,15 @@ export default function Register({ history }) {
             //   invalid: errors.email,
             // })}
           />
-          <label htmlFor="email">Email</label>
+          <label className={CSS.labels} htmlFor="email">
+            Email
+          </label>
           <p className="errorText">{errors.email}</p>
         </div>
-        <div>
+
+        <div className={`${CSS.flex} ${CSS.marginS}`}>
           <input
+            className={CSS.inputs}
             onChange={(event) => setNewUser({ ...newUser, password: event.target.value })}
             value={newUser.password}
             error={errors.password}
@@ -69,12 +81,15 @@ export default function Register({ history }) {
             //   invalid: errors.password,
             // })}
           />
-          <label htmlFor="password">Password</label>
+          <label className={CSS.labels} htmlFor="password">
+            Password
+          </label>
           <p className="errorText">{errors.password}</p>
         </div>
-        <div>
+        <div className={`${CSS.flex} ${CSS.marginS}`}>
           {/* THE CLASS FOR THE DIVS className="input-field col s12" */}
           <input
+            className={CSS.inputs}
             onChange={(event) => setNewUser({ ...newUser, confirmPwd: event.target.value })}
             value={newUser.confirmPwd}
             error={errors.confirmPwd}
@@ -84,19 +99,23 @@ export default function Register({ history }) {
             //   invalid: errors.password2,
             // })}
           />
-          <label htmlFor="confirmPwd">Confirm Password</label>
+          <label className={CSS.labels} htmlFor="confirmPwd">
+            Confirm Password
+          </label>
           <p className="errorText">{errors.confirmPwd}</p>
         </div>
-        <div className="button marginTopM">
-          <button type="submit" className="buttonText">
+
+        <div className={`${CSS.flex} ${CSS.marginM}`}>
+          <button className={`${CSS.buttons}`} type="submit">
             Sign up
           </button>
         </div>
       </form>
-      <div className="button marginTopM">
+
+      <div>
         <button
           type="submit"
-          className="buttonText"
+          className={`${CSS.buttons}`}
           onClick={function (e) {
             e.preventDefault();
             history.push("/login");
