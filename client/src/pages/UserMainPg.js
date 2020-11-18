@@ -158,7 +158,7 @@ export default function UserMainPg() {
               ></FistOfFiveChoice>
 
               <div ref={imgFive} className={`${CSS.hide} imgFive ${CSS.imgParams}`}>
-                <img className={CSS.imgFiveParams} src={"https://images.unsplash.com/photo-1542300058-b94b8ab7411b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"}></img>
+                <img src={"https://images.unsplash.com/photo-1542300058-b94b8ab7411b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"}></img>
               </div>
 
               <FistOfFiveChoice
