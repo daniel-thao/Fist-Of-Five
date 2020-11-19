@@ -1,24 +1,9 @@
-.fist-of-five-button {
-  /* justify-self: center;
-  font-size: 2em;
-  background: lightcoral;
-  border-radius: 0.3em; */
-  grid-column-start: 3;
-  grid-column-end: 9;
-  grid-row-start: 4;
-  grid-row-end: 8;
-}
-
 .btnGrid {
   display: grid;
   grid-template-columns: repeat(10, auto);
   grid-template-rows: repeat(10, auto);
   height: 100%;
 }
-
-/* .fist-of-five-button:hover {
-    background: lightgreen;
-} */
 
 .flex {
   display: flex;
@@ -54,52 +39,29 @@
 }
 
 .choiceZero {
-  /* background: lightgreen; */
   z-index: 3;
-}
-
-.imgZero {
 }
 
 .choiceOne {
-  /* background: lightgreen; */
   z-index: 3;
-}
-
-.imgOne {
 }
 
 .choiceTwo {
-  /* background: lightgreen; */
   z-index: 3;
-}
-
-.imgTwo {
 }
 
 .choiceThree {
-  /* background: lightgreen; */
   z-index: 3;
-}
-
-.imgThree {
 }
 
 .choiceFour {
-  /* background: lightgreen; */
   z-index: 3;
-}
-
-.imgFour {
 }
 
 .choiceFive {
-  /* background: lightgreen; */
   z-index: 3;
 }
 
-.imgFive {
-}
 
 /* MEADIA QUERIES */
 
