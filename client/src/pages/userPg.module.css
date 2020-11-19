@@ -1,69 +1,93 @@
 .background {
   background: rgb(199, 238, 250);
+  height: 100vh;
+}
+
+.extension {
+  height: auto;
+}
+
+.imgBackdrop {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.positionRelative {
+  position: relative;
+}
+
+/* =========== Buttons =========== */
+
+.btnSection {
+  /* background: rgb(199, 238, 250); */
+  display: flex;
+  justify-content: space-around;
+  /* position: absolute; */
+  height: 100%;
+  width: 100%;
+  margin: calc(100vw / 65) 0em 0em 0em;
 }
 
 .hide {
   visibility: hidden;
   opacity: 0;
-  transition: ease-in-out 2s linear;
+  transition: visibility 1s linear 1s, opacity 2s;
 }
 
 .show {
   visibility: visible;
   opacity: 1;
-  transition: ease-in-out 2s linear;
+  /* transition: visibility 0.3s linear 1s, opacity 200ms; */
 }
 
-.imgParams {
-  background-color: aliceblue;
-  max-width: 100%;
-  height: auto;
-  overflow: hidden;
+.buttons {
+  font-size: calc(100vw / 30);
+  color: rgb(255, 255, 255);
+  padding: calc(100vw / 65) calc(100vw / 20);
+  background-color: rgb(0, 147, 192);
+  border-radius: 0.5em;
+  border: none;
+  box-shadow: 0em 0em 0.2em black;
+  width: auto;
 }
 
-.imgZeroParams {
-object-fit: cover;
-width: 100%;
+.buttons:hover {
+  cursor: pointer;
+  background-color: rgb(247, 138, 189);
+  color: white;
+  box-shadow: 0em 0em 0.4em white;
 }
 
-.imgOneParams {
-  
+.buttons:focus {
+  outline: transparent;
 }
 
-.imgTwoParams {
+.buttons:active {
+  outline: transparent;
+  padding: calc(100vw / 65) calc(100vw / 23);
+  margin: 0em calc(100vw / 154);
+}
+
+.btnPosition {
   position: relative;
-  top: -62em;
+  top: calc(100vw / 10);
 }
 
-.imgThreeParams {
-  position: relative;
-  top: -10em;
-}
-
-.imgFourParams {
-  object-fit: cover;
-width: 100%;
-position: relative;
-top: -36em;
-}
-
-.imgFiveParams {
-  object-fit: scale-down;
-  width: 100%;
-  position: relative;
-  top: -28em;
-}
-
-/* Logout button */
+/* =========== LogoutBtn =========== */
 .logoutBtn {
-  font-size: 1em;
+  font-size: calc(100vw / 60);
   color: rgb(255, 255, 255);
   padding: 0.5em 1em;
   background-color: rgb(0, 147, 192);
   border-radius: 0.5em;
   border: none;
   box-shadow: 0em 0em 0.2em black;
+  margin: 1em 0em 0em 1em;
   width: auto;
+  position: relative;
 }
 
 .logoutBtn:hover {
@@ -79,7 +103,7 @@ top: -36em;
 .logoutBtn:active {
   outline: transparent;
   padding: 0.4em 0.8em;
-  margin: 0.1em 0.2em;
+  margin: 1.1em 0em 0.1em 1.2em;
 }
 
 /*  */
