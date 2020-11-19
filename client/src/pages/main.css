@@ -27,7 +27,8 @@
 }
 
 .userNotice {
-  font-size: 1em;
+  font-size: calc(100vw / 60);
+  color: aliceblue;
   text-align: center;
   padding: 1em 0em 1em 0em;
   font-family: "PT Sans", sans-serif;
@@ -39,121 +40,65 @@
   margin-right: auto;
   width: calc(100vw / 1.5);
   height: calc(100vw / 5.3);
+  position: relative;
 }
 
 .background {
   background: rgb(199, 238, 250);
   display: flex;
   flex-flow: column;
-  height: 100%;
   width: 100%;
+  height: auto;
   /* overflow: scroll; */
   /* overflow-y: scroll; */
-}
-
-/*  This is for the CSS Grid system You built */
-.grid {
-  display: grid;
-  /* grid-template-columns: 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14%;
-  grid-template-rows: 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555% 5.5555%; */
-  grid-template-columns: repeat(6, calc(100% / 6));
-  grid-template-rows: repeat(6, calc(100vh / 6));
 }
 
 .choiceZero {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
 
 .imgZero {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
 
 .choiceOne {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .imgOne {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .choiceTwo {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 4;
 }
 
 .imgTwo {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 3;
-  grid-row-end: 4;
 }
 
 .choiceThree {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 4;
-  grid-row-end: 5;
 }
 
 .imgThree {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 4;
-  grid-row-end: 5;
 }
 
 .choiceFour {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 5;
-  grid-column-end: 6;
-  grid-row-start: 5;
-  grid-row-end: 6;
 }
 
 .imgFour {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 5;
-  grid-row-end: 6;
 }
 
 .choiceFive {
   /* background: lightgreen; */
   z-index: 3;
-  grid-column-start: 6;
-  grid-column-end: 7;
-  grid-row-start: 6;
-  grid-row-end: 7;
 }
 
 .imgFive {
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 6;
-  grid-row-end: 7;
 }
 
 /* MEADIA QUERIES */

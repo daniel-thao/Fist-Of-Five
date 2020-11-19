@@ -13,6 +13,9 @@ import PrivateRoute from "./privateRoute/PrivateRoute";
 //import your REACT CONTEXTS for logging in and stuff
 import { Auth } from "./routes/authentication/userAuth";
 
+import './reset.css';
+
+
 function App() {
   return (
     <Auth>
