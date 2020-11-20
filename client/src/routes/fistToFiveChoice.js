@@ -38,31 +38,33 @@ export const postFistToFive = function (btn) {
     });
 };
 
+// Time to explain for myself too lol --> this is the populating funtion for the admins
 export const populate = async function (setFistToFive) {
+  // first fetch call to the this route that will get all the users that are not admins --> check the route (from here) --> ../../routes/api/user.js
   fetch("/api/user/adminReveal")
     .then(function (res) {
       return res.json();
     })
     .then(async function (resJSON) {
-      // we are sending back only the name and the choices for each nonAdmin person here
       // console.log(resJSON);
 
-      // This is the final array that will have every single user's name and choices
+      // This is the final array that will have every single user's name and choices in seperate arrays
       const allUserChoicesAndNumbers = [];
-      let counter = 0;
-      console.log(resJSON);
-      // console.log(resJSON[0].fistToFive[0]);
-      console.log(resJSON.length);
 
+      // This 1st For loop is here to traverse through the users
       for (let i = 0; i < resJSON.length; i++) {
-        console.log(i);
-
+        // Create an instanced array that will only contain each individual's data
         const nameAndChoices = [];
+        // Push in their name to clarify who the data lives with
         nameAndChoices.push(resJSON[i].name);
 
+        // This 2nd For Loop is here to traverse through all their choices that they have chosen though out their life span
         for (let j = 0; j < resJSON[i].fistToFive.length; j++) {
+          // this step not totally necessary
           const id = resJSON[i].fistToFive[j];
-          console.log(id);
+
+          // This only works in async functions, but the await allows the code to be read synchronously
+          // This is the 2nd fetch request to grab the information from the other collection in the db --> the outcome of this variable is resJSON2
           const test = await fetch(`/api/fistToFive/${id}`)
             .then(function (response2) {
               return response2.json();
@@ -71,58 +73,21 @@ export const populate = async function (setFistToFive) {
               return resJSON2;
             });
 
-          console.log(test);
+          // This code below this only runs once the other fetch request is finished
+          // console.log(test);
+
+          // This variable is also not technically necessary, but we're here
           const numberAndDate = `${test[0].number}, ${test[0].dateKey}`;
+
+          // push the selected data to the instanced array established in the scope above
           nameAndChoices.push(numberAndDate);
         }
+        // Once the second forloop is done running, push that instanced array into the final array that will contain all the users and their choices
         allUserChoicesAndNumbers.push(nameAndChoices);
       }
 
-      console.log(allUserChoicesAndNumbers);
-      return setFistToFive({ updateState: allUserChoicesAndNumbers });
-
-      // console.log(resJSON[0].fistToFive[0]);
-
-      // for (let i = 0; i < resJSON.length; i++) {
-      //   const nameAndChoices = [];
-      //   nameAndChoices.push(resJSON[i].name);
-
-      //     console.log(resJSON[i].fistToFive[0]);
-
-      // for (let j = 0; j < resJSON[i].fistToFive.length; j++) {
-      //   console.log(resJSON[i]);
-      //   console.log(resJSON[i].fistToFive[j]);
-
-      //   const fetching = await fetch(`/api/fistToFive/${resJSON[i].fistToFive[j]}`)
-      //     .then(function (response) {
-      //       return response.json();
-      //     })
-      //     .then(function (responseJSON) {
-      //       // Literally like malding because I spent the whole day on this issue. Anyways, the solve is to put a counter and use that counter to keep track of the index of the responseJSON because it for some reason, outputs all the of the promises rather than just the ones that should be in the forloop, which I don't get, but this is the solve for right now.
-
-      //       // This is throwing a soft error at me, but I'm not sure how else to solve the issue;
-      //       const numberAndDate = `${responseJSON[counter].number}, ${responseJSON[counter].dateKey}`;
-      //       counter++;
-      //       return numberAndDate;
-      //     });
-      //     console.log(fetching);
-      //   nameAndChoices.push(fetching);
-      //   console.log(nameAndChoices);
-      // }
-
       // console.log(allUserChoicesAndNumbers);
-
-      // Promise.all(nameAndChoices).then(function (resolve) {
-      //   console.log(resolve);
-      //   // I need this if statement here because I was getting just one name results for some reason
-      //   // if (resolve.length === 1) {
-      //   //   return;
-      //   // } else {
-      //   //   allUserChoicesAndNumbers.push(resolve);
-      //   //   return setFistToFive({ updateState: allUserChoicesAndNumbers });
-      //   // }
-      // });
-      // }
+      return setFistToFive({ updateState: allUserChoicesAndNumbers });
     })
     .catch(function (err) {
       console.log(err);

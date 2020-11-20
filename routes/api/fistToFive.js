@@ -56,12 +56,6 @@ router.get("/:choiceID", function (req, res) {
   });
 });
 
-router.post("/choiceID", function (req, res) {
-  db.FistToFive.find({ _id: req.body.id }).then(function (number) {
-    res.json(number);
-  });
-});
-
 // This is just to reset the db
 router.delete("/", function (req, res) {
   db.FistToFive.deleteMany({}).then(function (nodata) {
