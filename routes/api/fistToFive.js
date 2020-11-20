@@ -18,6 +18,14 @@ function deCoding(token) {
 
 // WE WILL EVENTUALLY NEED a jwt decoding thing here for when users come to use the appåd
 
+/*
+
+
+=============================================================================
+
+
+*/
+
 // make the POST request
 router.post("/", function (req, res) {
   // Create the chosen choice in the fist to Five collection
@@ -39,6 +47,14 @@ router.post("/", function (req, res) {
     });
 });
 
+/*
+
+
+=============================================================================
+
+
+*/
+
 router.get("/", function (req, res) {
   // res.json({message: "JIJIJIIJIJI"})
   db.FistToFive.find({})
@@ -49,6 +65,14 @@ router.get("/", function (req, res) {
       res.json(err);
     });
 });
+
+/*
+
+
+=============================================================================
+
+
+*/
 
 router.get("/:choiceID", function (req, res) {
   db.FistToFive.find({ _id: req.params.choiceID }).then(function (number) {
@@ -62,4 +86,39 @@ router.delete("/", function (req, res) {
     res.json(nodata);
   });
 });
+
+/*
+
+
+=============================================================================
+
+
+*/
+
+router.post("/findOneChoice", (req, res) => {
+  // console.log(req.body);
+  db.FistToFive.find({ _id: req.body.id })
+    .then(function (choice) {
+      res.json(choice);
+    })
+    .catch((err) => console.error(`Delete failed with error: ${err}`));
+});
+
+/*
+
+
+=============================================================================
+
+
+*/
+
+router.delete("/deleteOneChoice", (req, res) => {
+  // console.log(req.body);
+  db.FistToFive.deleteOne({ _id: req.body.id })
+    .then(function (choice) {
+      res.json(choice);
+    })
+    .catch((err) => console.error(`Delete failed with error: ${err}`));
+});
+
 module.exports = router;

@@ -29,7 +29,13 @@ function deCoding(token) {
   return id.id;
 }
 
-// ====================================================================================================================================================================================
+/*
+
+
+=============================================================================
+
+
+*/
 
 // REGISTRATION Post Method(Create a user basically)
 router.post("/register", (req, res) => {
@@ -71,7 +77,13 @@ router.post("/register", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
-// ====================================================================================================================================================================================
+/*
+
+
+=============================================================================
+
+
+*/
 
 // LOGIN Post(pseudoGET) Method(NOT updating or creating anything, but need to send info to backend to dbl check and then GET)
 // The reason we do a post here is because we are sending data from the front end to the backend EVEN though, we are just trying to GET the data from the backend, we need to send something from the front end to fact check stuff
@@ -121,7 +133,13 @@ router.post("/login", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
-// ====================================================================================================================================================================================
+/*
+
+
+=============================================================================
+
+
+*/
 
 router.post("/adminCheck", (req, res) => {
   const id = req.body.id;
@@ -142,6 +160,14 @@ router.post("/adminCheck", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
+/*
+
+
+=============================================================================
+
+
+*/
+
 router.get("/adminReveal", (req, res) => {
   db.User.find({})
     .then(function (user) {
@@ -161,6 +187,14 @@ router.get("/adminReveal", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
+/*
+
+
+=============================================================================
+
+
+*/
+
 router.get("/findAll/", (req, res) => {
   db.User.find({})
     .then(function (user) {
@@ -175,6 +209,14 @@ router.get("/findAll/", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
+/*
+
+
+=============================================================================
+
+
+*/
+
 router.post("/findOneUser/", (req, res) => {
   // console.log(req.body);
   db.User.find({ email: req.body.email })
@@ -183,6 +225,14 @@ router.post("/findOneUser/", (req, res) => {
     })
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
+
+/*
+
+
+=============================================================================
+
+
+*/
 
 router.delete("/deleteOneUser/", (req, res) => {
   // console.log(req.body);
@@ -193,14 +243,13 @@ router.delete("/deleteOneUser/", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
-router.delete("/deleteOneChoice", (req, res) => {
-  // console.log(req.body);
-  db.FistToFive.deleteOne({ _id: req.body.id })
-    .then(function (choice) {
-      res.json(choice);
-    })
-    .catch((err) => console.error(`Delete failed with error: ${err}`));
-});
+/*
+
+
+=============================================================================
+
+
+*/
 
 router.put("/updateUserChoiceArr", (req, res) => {
   // console.log(req.body);
