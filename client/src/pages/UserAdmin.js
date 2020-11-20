@@ -31,6 +31,50 @@ export default function UserAdmin() {
     [user]
   );
 
+  function deleteUserAndChoices() {
+    fetch("/api/user/findOneUser")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (resJSONFirst) {
+        console.log(resJSONFirst);
+
+        const userChoices = [];
+
+        for (let i = 0; i < resJSONFirst.fistToFive.length; i++) {
+          userChoices.push(
+            fetch("/api/user/deleteOneChoice", {
+              method: "DELETE",
+              body: JSON.stringify({ id: resJSONFirst.fistToFive[i] }),
+            })
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (resJSON) {
+                console.log(resJSON);
+              })
+          );
+        }
+        console.log(userChoices);
+
+        Promise.all(userChoices).then(function (resolve) {
+          // I need this if statement here because I was getting just one name results for some reason
+          console.log(resolve);
+          console.log(resJSONFirst.name);
+          fetch("/api/user/removeUser", {
+            method: "DELETE",
+            body: JSON.stringify({ id: resJSONFirst._id }),
+          })
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (resJSON) {
+              console.log(resJSON);
+            });
+        });
+      });
+  }
+
   // //   console.log(dayJS().format("MM-DD-ddd mm:ss"));
 
   //   // I need this format in a different JS file to compare and contrast and delete really old data since I don't have a huge DB storage unit
@@ -41,6 +85,7 @@ export default function UserAdmin() {
     <div>
       {dayJS().format("YYYY-MM-DD")}
       <button onClick={logoutUser}>Logout</button>
+      <button onClick={deleteUserAndChoices}>Delete User</button>
       <Section className={CSS.container}>
         {fistToFive.updateState.map(function (arr) {
           return (
@@ -58,6 +103,7 @@ export default function UserAdmin() {
           );
         })}
       </Section>
+      <button onClick={deleteUserAndChoices}>Delete User</button>
     </div>
   );
 }

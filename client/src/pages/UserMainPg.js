@@ -22,7 +22,7 @@ import { postFistToFive } from "../routes/fistToFiveChoice";
 
 export default function UserMainPg() {
   // This is importing the method from the context
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);
 
   // This is to makesure that a user can't spam the buttons, they can only spam every three seconds
   const [isChoiceClicked, setIsChoiceClicked] = useState(false);
@@ -49,6 +49,7 @@ export default function UserMainPg() {
   ];
 
   function checkBtnValue(btn) {
+    console.log(btn.target.value);
     // If the global state boolean is false do this
     if (!isChoiceClicked) {
       // Post the value to the DB in relation to the user
@@ -62,14 +63,19 @@ export default function UserMainPg() {
 
       // Then set a time limit on when they can choose another value
       setTimeout(function () {
-        // Once the timer is reached, change the boolean back to false to reflect that the new did not choose a value yet
-        setIsChoiceClicked(false);
+        if (user) {
+          // Once the timer is reached, change the boolean back to false to reflect that the new did not choose a value yet
+          setIsChoiceClicked(false);
 
-        // Let the user know that they can choose another value
-        setMessage("You may now choose another value");
-      }, 5000);
-      // If they are spamming values, send this message to the user
-    } else {
+          // Let the user know that they can choose another value
+          setMessage("You may now choose another value");
+        } else {
+          return;
+        }
+      }, 1000);
+    }
+    // If they are spamming values, send this message to the user
+    else {
       setMessage("Sorry, please wait a few moments before choosing another value");
     }
   }

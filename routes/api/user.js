@@ -137,13 +137,12 @@ router.post("/adminCheck", (req, res) => {
 });
 
 router.get("/adminReveal", (req, res) => {
-  db.User.find({}).then(function(user) {
-
-    const nonAdminUsersAndChoices = []
-    for(i = 0; i < user.length; i++) {
+  db.User.find({}).then(function (user) {
+    const nonAdminUsersAndChoices = [];
+    for (i = 0; i < user.length; i++) {
       // console.log(user[i]);
       const userNameAndFistToFive = {};
-      if(user[i].admin === false) {
+      if (user[i].admin === false) {
         userNameAndFistToFive.name = user[i].name;
         userNameAndFistToFive.fistToFive = user[i].fistToFive;
         nonAdminUsersAndChoices.push(userNameAndFistToFive);
@@ -153,5 +152,25 @@ router.get("/adminReveal", (req, res) => {
   });
 });
 
+router.get("/findOneUser", (req, res) => {
+  db.User.findOne({ _id: "5fb1f608c9df2700347ced9b" }).then(function (data) {
+    res.json(data);
+  });
+});
+
+router.delete("/deleteOneChoice", (req, res) => {
+  console.log(req.body);
+  db.FistToFive.findOneAndDelete({ _id: req.body.id }).then(function (data) {
+    res.json(data);
+  });
+});
+
+router.delete("/removeUser", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.id);
+  db.User.findOneAndDelete({ _id: req.body.id }).then(function (data) {
+    res.json(data);
+  });
+});
 
 module.exports = router;
