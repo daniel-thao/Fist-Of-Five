@@ -184,11 +184,20 @@ router.post("/findOneUser/", (req, res) => {
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
 
+router.delete("/deleteOneUser/", (req, res) => {
+  // console.log(req.body);
+  db.User.deleteOne({ email: req.body.email })
+    .then(function (user) {
+      res.json(user);
+    })
+    .catch((err) => console.error(`Delete failed with error: ${err}`));
+});
+
 router.delete("/deleteOneChoice", (req, res) => {
   // console.log(req.body);
   db.FistToFive.deleteOne({ _id: req.body.id })
-    .then(function (data) {
-      res.json(data);
+    .then(function (choice) {
+      res.json(choice);
     })
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
@@ -197,8 +206,8 @@ router.put("/updateUserChoiceArr", (req, res) => {
   // console.log(req.body);
   // console.log(req.body.arr);
   db.User.updateOne({ _id: req.body.id } ,{$set: {fistToFive : req.body.arr}})
-    .then(function (data) {
-      res.json(data);
+    .then(function (choiceArr) {
+      res.json(choiceArr);
     })
     .catch((err) => console.error(`Delete failed with error: ${err}`));
 });
