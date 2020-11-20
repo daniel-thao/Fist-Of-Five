@@ -57,6 +57,7 @@ export const populate = async function (setFistToFive) {
         const nameAndChoices = [];
         // Push in their name to clarify who the data lives with
         nameAndChoices.push(resJSON[i].name);
+        nameAndChoices.push(resJSON[i].email);
 
         // This 2nd For Loop is here to traverse through all their choices that they have chosen though out their life span
         for (let j = 0; j < resJSON[i].fistToFive.length; j++) {
@@ -76,14 +77,20 @@ export const populate = async function (setFistToFive) {
           // This code below this only runs once the other fetch request is finished
           // console.log(test);
 
-          // This variable is also not technically necessary, but we're here
-          const numberAndDate = `${test[0].number}, ${test[0].dateKey}`;
+          // This is just in case the deleteing process messes up, still testing it
+          let numberAndDate = "";
+          if (test[0] === undefined || test[0] === null) {
+            numberAndDate = "";
+          } else {
+            numberAndDate = `${test[0].number}, ${test[0].dateKey}`;
+          }
 
           // push the selected data to the instanced array established in the scope above
           nameAndChoices.push(numberAndDate);
         }
         // Once the second forloop is done running, push that instanced array into the final array that will contain all the users and their choices
         allUserChoicesAndNumbers.push(nameAndChoices);
+        // console.log(allUserChoicesAndNumbers);
       }
 
       // console.log(allUserChoicesAndNumbers);

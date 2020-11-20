@@ -15,11 +15,13 @@ import Section from "../components/regular/Section";
 
 // import CSS
 import CSS from "../pages/admin.module.css";
+import { use } from "passport";
 
 export default function UserAdmin() {
   // This is going to be sent into the populte function as a call back and then used down in the JSX
   const [fistToFive, setFistToFive] = useState({ updateState: [] });
   const { user, logoutUser } = useContext(AuthContext);
+  const [deleteUser, setDeleteUser] = useState("");
 
   // activate the populate function right away
   useEffect(
@@ -31,55 +33,52 @@ export default function UserAdmin() {
     [user]
   );
 
-  function deleteUserAndChoices() {
-    fetch("/api/user/findOneUser")
-      .then(function (response) {
-        return response.json();
+  async function deleteUserAndChoices(e) {
+    e.preventDefault();
+    // console.log(deleteUser);
+
+    const firstCall = await fetch("/api/user/findOneUser", {
+      method: "POST",
+      body: JSON.stringify({ email: deleteUser }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJSON) => resJSON);
+
+    for (let i = 0; i < firstCall[0].fistToFive.length; i++) {
+      const choiceId = firstCall[0].fistToFive[i];
+
+      const secondCall = await fetch("/api/user/deleteOneChoice", {
+        method: "DELETE",
+        body: JSON.stringify({ id: choiceId }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then(function (resJSONFirst) {
-        console.log(resJSONFirst);
+        .then((res) => {
+          res.json();
+        })
+        .then((resJSON) => resJSON);
 
-        const userChoices = [];
+      // console.log(secondCall);
+    }
 
-        for (let i = 0; i < resJSONFirst.fistToFive.length; i++) {
-          userChoices.push(
-            fetch("/api/user/deleteOneChoice", {
-              method: "DELETE",
-              body: JSON.stringify({ id: resJSONFirst.fistToFive[i] }),
-            })
-              .then(function (response) {
-                return response.json();
-              })
-              .then(function (resJSON) {
-                console.log(resJSON);
-              })
-          );
-        }
-        console.log(userChoices);
+    const thirdCall = await fetch("/api/user/updateUserChoiceArr", {
+      method: "PUT",
+      body: JSON.stringify({ id: firstCall[0]._id, arr: [] }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJSON) => resJSON);
 
-        Promise.all(userChoices).then(function (resolve) {
-          // I need this if statement here because I was getting just one name results for some reason
-          console.log(resolve);
-          console.log(resJSONFirst.name);
-          fetch("/api/user/removeUser", {
-            method: "DELETE",
-            body: JSON.stringify({ id: resJSONFirst._id }),
-          })
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (resJSON) {
-              console.log(resJSON);
-            });
-        });
-      });
+      // console.log(thirdCall);
+
+    // const secondCall = await fetch("api/user/deleteOneChoice")
   }
-
-  // //   console.log(dayJS().format("MM-DD-ddd mm:ss"));
-
-  //   // I need this format in a different JS file to compare and contrast and delete really old data since I don't have a huge DB storage unit
-  //   const date1 = dayJS("2020-11-25");
-  //   let dateDiff = date1.diff(dayJS().format("YYYY-MM-DD"), "day");
 
   return (
     <div>
@@ -91,6 +90,7 @@ export default function UserAdmin() {
           return (
             <Section className={CSS.seperateUsers} key={arr[0]}>
               <h1>{arr[0]}</h1>
+              <h1>{arr[1]}</h1>
               {arr.map(function (indexValue) {
                 //   console.log(`${arr[0]} ${indexValue}`);
                 return Number.isInteger(parseInt(indexValue.substr(0, 1))) ? (
@@ -103,7 +103,16 @@ export default function UserAdmin() {
           );
         })}
       </Section>
-      <button onClick={deleteUserAndChoices}>Delete User</button>
+      <form onSubmit={deleteUserAndChoices}>
+        <input
+          type="text"
+          onChange={function (e) {
+            e.preventDefault();
+            setDeleteUser(e.target.value);
+          }}
+        ></input>
+        <button type="submit">Reset All User Choices</button>
+      </form>
     </div>
   );
 }
