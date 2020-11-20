@@ -21,7 +21,7 @@ export default function UserAdmin() {
   // This is going to be sent into the populte function as a call back and then used down in the JSX
   const [fistToFive, setFistToFive] = useState({ updateState: [] });
   const { user, logoutUser } = useContext(AuthContext);
-  const [deleteUser, setDeleteUser] = useState("");
+  const [hardResetChoices, setHardResetChoices] = useState("");
 
   // activate the populate function right away
   useEffect(
@@ -33,13 +33,13 @@ export default function UserAdmin() {
     [user]
   );
 
-  async function deleteUserAndChoices(e) {
+  async function resetUserChoices(e) {
     e.preventDefault();
-    // console.log(deleteUser);
+    // console.log(hardResetChoices);
 
     const firstCall = await fetch("/api/user/findOneUser", {
       method: "POST",
-      body: JSON.stringify({ email: deleteUser }),
+      body: JSON.stringify({ email: hardResetChoices }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -80,11 +80,14 @@ export default function UserAdmin() {
     // const secondCall = await fetch("api/user/deleteOneChoice")
   }
 
+  async function deleteUser() {
+// In here I want to make it so that I can't delete the user until I hard reset their choice arr
+  }
+
   return (
     <div>
       {dayJS().format("YYYY-MM-DD")}
       <button onClick={logoutUser}>Logout</button>
-      <button onClick={deleteUserAndChoices}>Delete User</button>
       <Section className={CSS.container}>
         {fistToFive.updateState.map(function (arr) {
           return (
@@ -103,16 +106,17 @@ export default function UserAdmin() {
           );
         })}
       </Section>
-      <form onSubmit={deleteUserAndChoices}>
+      <form onSubmit={resetUserChoices}>
         <input
           type="text"
           onChange={function (e) {
             e.preventDefault();
-            setDeleteUser(e.target.value);
+            setHardResetChoices(e.target.value);
           }}
         ></input>
         <button type="submit">Reset All User Choices</button>
       </form>
+      <button onClick={deleteUser}>Delete User</button>
     </div>
   );
 }
