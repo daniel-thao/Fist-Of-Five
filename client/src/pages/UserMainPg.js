@@ -56,7 +56,7 @@ export default function UserMainPg() {
       postFistToFive(btn);
 
       // Let user know that they chose a value
-      setMessage("Thank you, for choosing a value");
+      setMessage(`Thank you, for choosing a value: ${btn.target.value}`);
 
       // change Boolean value to TRUE that the user did click a value
       setIsChoiceClicked(true);
@@ -72,7 +72,7 @@ export default function UserMainPg() {
         } else {
           return;
         }
-      }, 3000);
+      }, 4000);
     }
     // If they are spamming values, send this message to the user
     else {
