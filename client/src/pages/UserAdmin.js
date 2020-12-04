@@ -17,7 +17,7 @@ import Section from "../components/regular/Section";
 import CSS from "../pages/admin.module.css";
 import "./main.css";
 
-export default function UserAdmin() {
+export default function UserAdmin({history}) {
   // This is going to be sent into the populte function as a call back and then used down in the JSX
   const [fistToFive, setFistToFive] = useState({ updateState: [] });
   const { user, logoutUser } = useContext(AuthContext);
@@ -63,11 +63,17 @@ export default function UserAdmin() {
     }
   }
 
+  function refreshData() {
+    history.push("/");
+  }
+
   return (
     <div>
       {/* This is DayJS exact dating method */}
       {dayJS().format("YYYY-MM-DD")}
       <button onClick={logoutUser}>Logout</button>
+      <button onClick={refreshData}>Refresh Data</button>
+
       <Section className={CSS.container}>
         {fistToFive.updateState.map(function (arr) {
           return (
