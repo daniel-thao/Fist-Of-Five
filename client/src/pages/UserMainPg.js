@@ -72,7 +72,7 @@ export default function UserMainPg() {
         } else {
           return;
         }
-      }, 1000);
+      }, 3000);
     }
     // If they are spamming values, send this message to the user
     else {
