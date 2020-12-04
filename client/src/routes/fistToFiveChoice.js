@@ -149,7 +149,7 @@ export const resetUserChoices = async function (hardResetChoicesState) {
     const choiceId = firstCall[0].fistToFive[i];
 
     // then do another promise call to the fistToFive Collection to delete said choice
-    await fetch("/api/user/deleteOneChoice", {
+    await fetch("/api/fistToFive/deleteOneChoice", {
       method: "DELETE",
       // passing in the id of the choice as the id property
       body: JSON.stringify({ id: choiceId }),
