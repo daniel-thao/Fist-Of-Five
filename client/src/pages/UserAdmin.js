@@ -30,6 +30,10 @@ export default function UserAdmin({history}) {
     populate(setFistToFive);
   }, [user]);
 
+  async function resetAllExistingChoices() {
+    fistToFive.updateState.forEach((element) => resetUserChoices(element[1]));
+  }
+
   // This function is meant to be the gating mechanism for the next two buttons
   async function hardResetAndDeleteGate(e) {
     // Pass in the Event(e) and prevent the default
@@ -96,6 +100,9 @@ export default function UserAdmin({history}) {
       </Section>
 
       {/* Too lazy to make a component for this --> only used once in this scope of things */}
+      <button className="flex" onClick={resetAllExistingChoices}>Reset all existing choices</button>
+
+
       <div className="flex">
         <form onSubmit={hardResetAndDeleteGate}>
           <label>
