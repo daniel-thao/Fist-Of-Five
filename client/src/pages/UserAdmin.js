@@ -65,7 +65,7 @@ export default function UserAdmin({history}) {
 
   function refreshData() {
     console.log("shouldve worked")
-    history.push("/admin");
+    history.push("/");
   }
 
   return (
